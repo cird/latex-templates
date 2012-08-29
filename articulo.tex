@@ -1,0 +1,87 @@
+%% Copyright (C) 2012 por Nombre y Apellido
+
+\documentclass[12pt,a4paper]{article}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[Spanish]{babel}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{graphicx}
+
+%% Información básica del artículo que puede ser utilizada en el
+%% encabezado o el pie de página.
+\newcommand{\titleinfo}{Título del Artículo}
+\newcommand{\authorinfo}{Nombre y Apellido}
+
+%% Fancy header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancypagestyle{firststyle} % Estilo para la primera página.
+{
+  \fancyhf{}
+  \lhead{\authorinfo}
+  \rhead{\includegraphics[scale=0.3]{images/cird.pdf}}
+  \cfoot{\thepage}
+}
+%% Estilo para las demás páginas
+\fancyhf{}
+\lhead{\authorinfo}
+\rhead{\includegraphics[scale=0.3]{images/cird.pdf}}
+\cfoot{\thepage}
+
+%% Fuente por defecto.
+\usepackage[sc]{mathpazo}
+\linespread{1.05}
+\usepackage[T1]{fontenc}
+
+%% Fuente para las secciones.
+\usepackage{sectsty}
+\sectionfont{\sffamily\Large}
+\subsectionfont{\sffamily}
+
+%% Estilo de los listados de código.
+\lstset{
+  language=C++,
+  basicstyle=\sffamily,
+  columns=fullflexible,
+  xleftmargin=18pt,
+  escapechar=\@
+}
+
+%% Se puede usar \Inline{...} para mostrar código en línea, el cual se
+%% verá en negrita (\bfseries).
+\def\Inline{\lstinline[basicstyle=\bfseries,keywordstyle={}]}
+
+%% Los comentarios alineados hacia la derecha en el código fuente se
+%% puede utilizar con @\Comment{...}@
+\newcommand*{\Comment}[1]{\hfill\makebox[6cm][l]{#1}}%
+
+\begin{document}
+\title{\titleinfo}
+\author{\authorinfo}
+\date{}
+
+\maketitle
+\thispagestyle{firststyle} % Quitar esta línea si no se quiere fancyhdr en la primer página
+
+\section{Introducción}
+
+Este es un ejemplo de un pequeño artículo mostrando el programa más
+famoso ---y más inútil--- del mundo:
+
+\begin{lstlisting}
+#include <stdio.h>
+
+int main()
+{
+  printf(``Hola mundo\n''); @\Comment{/* Un comentario alineado */}@
+  return 0;                 @\Comment{/* Devolver 0 */}@
+}
+\end{lstlisting}
+
+\end{document}
